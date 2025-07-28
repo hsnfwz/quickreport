@@ -212,7 +212,7 @@ export default function Settings({ settings, setSettings, csv }) {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <h1 className=" text-white">Heading</h1>
+          <h1 className="text-white">Heading</h1>
           <input
             type="text"
             autoComplete="off"
@@ -221,7 +221,6 @@ export default function Settings({ settings, setSettings, csv }) {
             }
             value={settings.title}
             className="w-full p-4 border-1 border-neutral-500 hover:bg-neutral-500 bg-neutral-600 rounded focus:bg-neutral-600 focus:outline-0 focus:border-black text-white"
-            text-white
           />
           <div className="flex gap-2">
             <button
@@ -321,7 +320,6 @@ export default function Settings({ settings, setSettings, csv }) {
             }
             value={settings.subtitle}
             className="w-full p-4 border-1 border-neutral-500 hover:bg-neutral-500 bg-neutral-600 rounded focus:bg-neutral-600 focus:outline-0 focus:border-black text-white"
-            text-white
           />
           <div className="flex gap-2">
             <button

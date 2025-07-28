@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Papa from "papaparse";
 import Settings from "./components/Settings";
 import Preview from "./components/Preview";
@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 
 export default function App() {
+  const [isMobile, setIsMobile] = useState(true);
+
   const [settings, setSettings] = useState({
     paper: "PAPER_A4",
     orientation: "ORIENTATION_PORTRAIT",
@@ -49,6 +51,24 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [csv, setCsv] = useState([]);
   const [pages, setPages] = useState([]);
+
+
+  useEffect(() => {
+    function isMobile() {
+      console.log('checking...')
+      if ((window.innerWidth <= 1024 && window.innerHeight <= 1366) || (window.innerWidth <= 1366 && window.innerHeight <= 1024)) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    }
+
+    isMobile();
+
+    window.addEventListener('resize', isMobile);
+
+    return () => window.removeEventListener('resize', isMobile);
+  }, [window.innerWidth, window.innerHeight]);
 
   const chunkData = (data, chunkSize) => {
     const result = [];
@@ -166,8 +186,9 @@ export default function App() {
             Quickly convert CSV files to beautiful, branded PDF reports!
           </h2>
           <button
+            disabled={isMobile}
             onClick={() => document.getElementById("file").click()}
-            className="border-1 border-transparent font-bold bg-emerald-500 p-4 rounded text-white cursor-pointer hover:bg-emerald-700 transition-all focus:outline-0 focus:border-black"
+            className="disabled:opacity-50 disabled:pointer-events-none border-1 border-transparent font-bold bg-emerald-500 p-4 rounded text-white cursor-pointer hover:bg-emerald-700 transition-all focus:outline-0 focus:border-black"
           >
             Upload CSV
           </button>
@@ -178,6 +199,9 @@ export default function App() {
             onInput={handleFile}
             className="hidden"
           />
+          {isMobile && (
+            <h1 className="text-rose-500 font-bold italic">Mobile support coming soon!</h1>
+          )}
         </div>
       )}
     </>
