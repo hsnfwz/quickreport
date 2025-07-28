@@ -10,6 +10,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
+import { Analytics } from "@vercel/analytics/next"
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(true);
@@ -106,6 +107,8 @@ export default function App() {
 
   return (
     <>
+    <Analytics />
+    
       {pages.length > 0 && (
         <div className="w-full flex">
           <div className="w-full flex flex-col gap-4 max-w-[400px] z-10 p-4 h-screen bg-neutral-700">
