@@ -111,7 +111,7 @@ export default function App() {
 
       {pages.length > 0 && (
         <div className="w-full flex">
-          <div className="w-full flex flex-col gap-4 max-w-[400px] z-10 p-4 h-screen bg-neutral-700">
+          <div className="w-full flex flex-col gap-4 max-w-[400px] z-10 p-4 h-screen bg-neutral-700 order-2">
             <button
               className="w-full p-4 bg-sky-500 cursor-pointer hover:bg-sky-700 transition-all border-1 border-transparent focus:outline-0 focus:border-black text-white font-bold rounded text-center"
               onClick={async () => {
@@ -176,7 +176,7 @@ export default function App() {
             <div className="w-full min-h-[1px] bg-neutral-600 rounded-full"></div>
             <Settings settings={settings} setSettings={setSettings} csv={csv} />
           </div>
-          <div className="m-auto z-20 p-8 flex w-full h-screen items-center justify-center bg-neutral-800">
+          <div className="m-auto z-20 p-8 flex w-full h-screen items-center justify-center bg-neutral-800 order-1">
             <Preview settings={settings} csv={csv} pages={pages} page={page} />
           </div>
         </div>
